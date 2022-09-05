@@ -1,30 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.msb.mall</groupId>
-    <artifactId>mall-mall</artifactId>
+    <groupId>com.feilueze</groupId>
+    <artifactId>ht</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mall-mall</name>
-    <description>马士兵三高项目-聚合工程</description>
     <packaging>pom</packaging>
+    <name>ht</name>
+    <description>ht cat </description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
+    </properties>
 
     <modules>
-        <module>mall-ware</module>
-        <module>mall-member</module>
-        <module>mall-coupon</module>
-        <module>mall-order</module>
-        <module>mall-product</module>
-        <module>renren-fast-master</module>
-        <module>renren-generator-master</module>
-        <module>mall-commons</module>
-        <module>mall-gateway</module>
-        <module>mall-third-party</module>
-        <module>mall-search</module>
-        <module>mall-auth_server</module>
-        <module>mall-cart</module>
-        <module>mall-seckill</module>
-
+        <module>ht-api</module>
+        <module>ht-dao</module>
+        <module>ht-manager</module>
+        <module>ht-service</module>
+        <module>ht-web</module>
+        <module>start</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.taobao.arthas</groupId>
+                <artifactId>arthas-spring-boot-starter</artifactId>
+                <version>3.4.8</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>2.1.4</version>
+                <type>jar</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
