@@ -16,14 +16,14 @@
         <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
     </properties>
 
-    <modules>
-        <module>ht-api</module>
-        <module>ht-dao</module>
-        <module>ht-manager</module>
-        <module>ht-service</module>
-        <module>ht-web</module>
-        <module>start</module>
-    </modules>
+<!--    <modules>-->
+<!--        <module>ht-api</module>-->
+<!--        <module>ht-dao</module>-->
+<!--        <module>ht-manager</module>-->
+<!--        <module>ht-service</module>-->
+<!--        <module>ht-web</module>-->
+<!--        <module>start</module>-->
+<!--    </modules>-->
 
     <dependencyManagement>
         <dependencies>
