@@ -10,7 +10,7 @@ email:
   emailHost: smtp.163.com
   transportType: smtp
   fromUser: 涛涛
-  fromEmail: 
+  fromEmail:
   authCode:
 sms:
   accessKeyId:
