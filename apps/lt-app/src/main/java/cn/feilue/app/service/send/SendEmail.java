@@ -1,7 +1,10 @@
-package cn.feilue.app.service.email;
+package cn.feilue.app.service.send;
 
+import cn.feilue.app.service.config.EmailConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -17,13 +20,16 @@ import java.util.Properties;
 /**
  * @author hongtao
  */
+@Component
 public class SendEmail {
     private static Logger log =   LoggerFactory.getLogger(SendEmail.class);
-    public String emailHost = "smtp.163.com";       //发送邮件的主机
-    public String transportType = "smtp";           //邮件发送的协议
-    public String fromUser = "涛涛";           //发件人名称
-    public String fromEmail = "feilueze@163.com";  //发件人邮箱
-    public String authCode = "NSJEMWOROVIFRSOW";    //发件人邮箱授权码
+    @Autowired
+    private EmailConfig emailConfig;
+//    public String emailHost = "smtp.163.com";       //发送邮件的主机
+//    public String transportType = "smtp";           //邮件发送的协议
+//    public String fromUser = "涛涛";           //发件人名称
+//    public String fromEmail = "feilueze@163.com";  //发件人邮箱
+//    public String authCode = "NSJEMWOROVIFRSOW";    //发件人邮箱授权码
 
     /**
      *  这里可以做 动态邮箱 服务账号去发送针对 公共发送邮件有限制
@@ -34,10 +40,10 @@ public class SendEmail {
      * @param authCode
      */
     public SendEmail(String emailHost,String transportType,String fromEmail,String authCode) {
-        this.emailHost = emailHost;
-        this.transportType = transportType;
-        this.fromEmail = fromEmail;
-        this.authCode = authCode;
+//        this.emailHost = emailHost;
+//        this.transportType = transportType;
+//        this.fromEmail = fromEmail;
+//        this.authCode = authCode;
     }
 
     public SendEmail() {
@@ -50,10 +56,10 @@ public class SendEmail {
 
         //初始化默认参数
         Properties props = new Properties();
-        props.setProperty("mail.transport.protocol", transportType);
-        props.setProperty("mail.host", emailHost);
-        props.setProperty("mail.user", fromUser);
-        props.setProperty("mail.from", fromEmail);
+        props.setProperty("mail.transport.protocol", emailConfig.getTransportType());
+        props.setProperty("mail.host", emailConfig.getEmailHost());
+        props.setProperty("mail.user", emailConfig.getFromUser());
+        props.setProperty("mail.from", emailConfig.getFromEmail());
         //获取Session对象
         Session session = Session.getInstance(props, null);
         //开启后有调试信息
@@ -62,7 +68,7 @@ public class SendEmail {
         //通过MimeMessage来创建Message接口的子类
         MimeMessage message = new MimeMessage(session);
 
-        String formName = MimeUtility.encodeWord("涛涛") + " <" + fromEmail + ">";
+        String formName = MimeUtility.encodeWord("涛涛") + " <" + emailConfig.getFromEmail() + ">";
         InternetAddress from = new InternetAddress(formName);
         message.setFrom(from);
 
@@ -84,7 +90,7 @@ public class SendEmail {
         //获取Transport对象
         Transport transport = session.getTransport();
         //smtp验证，就是你用来发邮件的邮箱用户名密码（若在之前的properties中指定默认值，这里可以不用再次设置）
-        transport.connect(emailHost, fromEmail, authCode);
+        transport.connect(emailConfig.getEmailHost(), emailConfig.getFromEmail(), emailConfig.getAuthCode());
         //发送邮件
         transport.sendMessage(message, message.getAllRecipients()); // 发送
     }

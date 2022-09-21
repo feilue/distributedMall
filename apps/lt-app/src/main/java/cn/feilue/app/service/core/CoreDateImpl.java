@@ -3,6 +3,7 @@ package cn.feilue.app.service.core;
 import cn.feilue.app.service.commone.CheckResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
@@ -10,6 +11,7 @@ import java.util.*;
 /**
  * @author hongtao
  */
+@Component
 public class CoreDateImpl {
     private static Logger log =   LoggerFactory.getLogger(CoreDateImpl.class);
     //农历（阴历）年，月，

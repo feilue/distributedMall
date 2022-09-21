@@ -210,14 +210,11 @@
         </dependency>
 
 
-
-
-
-
-
-
-
-
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>alibabacloud-dysmsapi20170525</artifactId>
+            <version>1.0.1</version>
+        </dependency>
 
     </dependencies>
 

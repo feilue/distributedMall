@@ -1,13 +1,14 @@
 package cn.feilue.app.service.core;
 
+import cn.feilue.app.service.PersonnelService;
 import cn.feilue.app.service.commone.CheckResult;
 import cn.feilue.app.service.commone.SendOpt;
-import cn.feilue.app.service.email.SendEmail;
+import cn.feilue.app.service.send.SendEmail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -15,6 +16,13 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 public class Core {
+    @Autowired
+    private PersonnelService personnelService;
+    @Autowired
+    private SendEmail sendEmail;
+    @Autowired
+    private CoreDateImpl coreDate;
+
     private static Logger log =   LoggerFactory.getLogger(Core.class);
     public Core() {
     }
@@ -31,8 +39,7 @@ public class Core {
      * @param opt 1:邮件；2:短信
      */
     public  void task(int opt) {
-        CoreDateImpl core = new CoreDateImpl();
-        CheckResult result = core.check();
+        CheckResult result = coreDate.check();
         System.out.println("result = " + result);
        /* switch (opt) {
             case 1:
@@ -48,9 +55,10 @@ public class Core {
 
     private  void sendEmail(CheckResult result) {
         //获取人员列表
-        List<String> personnelList = new ArrayList<>();
-        personnelList.add("14325393322@qq.com");
+        List<String> personnelList = personnelService.recipientList(SendOpt.EMAIL);
+//        personnelList.add("14325393322@qq.com");
         personnelList.add("877767697@qq.com");
+
         switch (result.getFlag()) {
             case 1:
                 System.out.println("发送十斋日邮件开始.... ");
@@ -73,12 +81,10 @@ public class Core {
     }
 
     private  void sendShiZaiEmail(CheckResult result, List<String> personnelList) {
-        SendEmail sendEmail = new SendEmail();
         sendEmail.sendToEmails(personnelList, "明天"+result.getDate()+"是十斋日", result.getShiZaiCents());
     }
 
     private  void sendShengDanEmail(CheckResult result, List<String> personnelList) {
-        SendEmail sendEmail = new SendEmail();
         sendEmail.sendToEmails(personnelList, result.getName(), result.getPusaChristmasCents());
     }
 

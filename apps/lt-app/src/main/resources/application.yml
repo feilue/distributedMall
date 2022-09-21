@@ -1,0 +1,17 @@
+logging:
+  config: classpath:log4j2.xml
+# 容器配置
+server:
+  port: 8099
+  servlet:
+    context-path: /app
+#自定义配置
+email:
+  emailHost: smtp.163.com
+  transportType: smtp
+  fromUser: 涛涛
+  fromEmail: 
+  authCode:
+sms:
+  accessKeyId:
+  accessKeySecret:
