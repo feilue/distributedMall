@@ -6,17 +6,290 @@
     <artifactId>feilue-code</artifactId>
     <packaging>jar</packaging>
 
+<!--    <parent>-->
+<!--        <groupId>net.feilue</groupId>-->
+<!--        <artifactId>feilue-parent</artifactId>-->
+<!--        <version>1.0</version>-->
+<!--        <relativePath>../feilue-parent/pom.xml</relativePath>-->
+<!--    </parent>-->
     <parent>
-        <groupId>net.feilue</groupId>
-        <artifactId>feilue-parent</artifactId>
-        <version>1.0</version>
-        <relativePath>../feilue-parent/pom.xml</relativePath>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.9.RELEASE</version>
     </parent>
 
-    <dependencies>
+    <properties>
+        <org.apache.rocketmq.version>4.3.0</org.apache.rocketmq.version>
+
+        <org.apache.logging.log4j.version>2.17.1</org.apache.logging.log4j.version>
+        <org.org.slf4j.slf4j-api.version>2.0.0-alpha1</org.org.slf4j.slf4j-api.version>
+        <io.netty.netty-all.version>4.1.42.Final</io.netty.netty-all.version>
+        <com.rabbitmq.amqp-client.version>3.6.5</com.rabbitmq.amqp-client.version>
+
+        <com.alibaba.fastjson.version>1.2.83</com.alibaba.fastjson.version>
+        <com.caucho.hessian.version>4.0.38</com.caucho.hessian.version>
+        <com.esotericsoftware.kryo.version>4.0.1</com.esotericsoftware.kryo.version>
+        <com.github.axet.kaptcha.version>0.0.9</com.github.axet.kaptcha.version>
+        <com.healthservice.bcprov.version>1.0</com.healthservice.bcprov.version>
+        <org.bouncycastle.bcprov.on.version>1.65</org.bouncycastle.bcprov.on.version>
+        <com.healthservice.hsj.version>1.0</com.healthservice.hsj.version>
+
+        <com.lowagie.itext-rtf.version>2.1.7</com.lowagie.itext-rtf.version>
+        <commons.io.version>2.6</commons.io.version>
+        <com.qcloud.cos_api.version>5.5.7</com.qcloud.cos_api.version>
+        <com.google.code.gson.version>2.8.4</com.google.code.gson.version>
+        <com.baomidou.mybatis.plus.version>3.0.6</com.baomidou.mybatis.plus.version>
+        <com.google.zxing.version>3.3.3</com.google.zxing.version>
+
+        <de.javakaffee.kryo-serializers.version>0.42</de.javakaffee.kryo-serializers.version>
+        <cglib.version>3.2.6</cglib.version>
+        <io.jsonwebtoken.jjwt.version>0.6.0</io.jsonwebtoken.jjwt.version>
+        <javax.validation.api.version>2.0.1.Final</javax.validation.api.version>
+        <org.hibernate.validator.version>6.0.17.Final</org.hibernate.validator.version>
+        <log4j.version>1.2.14</log4j.version>
+        <maven-jar-plugin.version>2.6</maven-jar-plugin.version>
+        <net.coobird.thumbnailator.version>0.4.8</net.coobird.thumbnailator.version>
+        <org.apache.commons.lang.version>2.6</org.apache.commons.lang.version>
+        <org.apache.commons.lang3.version>3.9</org.apache.commons.lang3.version>
+        <org.apache.commons.collections4.version>4.4</org.apache.commons.collections4.version>
+        <org.apache.commons.math3.version>3.6.1</org.apache.commons.math3.version>
+        <org.apache.commons.io.version>1.3.2</org.apache.commons.io.version>
+        <org.apache.commons.logging.version>1.2</org.apache.commons.logging.version>
+        <org.apache.commons.dbcp2.version>2.6.0</org.apache.commons.dbcp2.version>
+        <org.apache.commons.pool2.version>2.7.0</org.apache.commons.pool2.version>
+        <org.apache.commons.beanutils.version>1.9.2</org.apache.commons.beanutils.version>
+        <org.apache.commons.text.version>1.8</org.apache.commons.text.version>
+        <org.apache.commons.net.version>3.6</org.apache.commons.net.version>
+        <org.apache.rocketmq.version>4.3.0</org.apache.rocketmq.version>
+        <org.apache.zookeeper.version>3.4.8</org.apache.zookeeper.version>
+        <org.apache.curator.version>4.2.0</org.apache.curator.version>
+        <org.apache.poi.version>3.17</org.apache.poi.version>
+        <org.apache.poi.ooxml.version>3.17</org.apache.poi.ooxml.version>
+        <org.apache.cxf.version>3.1.12</org.apache.cxf.version>
+        <org.csource.fastdfs-client-java.version>1.27-SNAPSHOT</org.csource.fastdfs-client-java.version>
+        <org.freemarker.version>2.3.28</org.freemarker.version>
+        <org.javassist.version>3.24.0-GA</org.javassist.version>
+        <org.jboss.netty.version>3.2.10.Final</org.jboss.netty.version>
+        <org.mybatis.spring.boot.version>2.1.0</org.mybatis.spring.boot.version>
+        <org.springframework.boot.version>2.3.9.RELEASE</org.springframework.boot.version>
+        <!--<org.springframework.cloud.version>Greenwich.SR3</org.springframework.cloud.version>-->
+        <org.springframework.cloud.version>Hoxton.SR9</org.springframework.cloud.version>
+        <org.xhtmlrenderer.flying-saucer-pdf.version>9.1.16</org.xhtmlrenderer.flying-saucer-pdf.version>
+        <io.springfox.swagger.version>2.9.2</io.springfox.swagger.version>
+        <org.mortbay.jetty.version>6.1.5</org.mortbay.jetty.version>
+        <!--<io.github.openfeign.httpclient.version>10.2.3</io.github.openfeign.httpclient.version>-->
+        <io.github.openfeign.feign-okhttp.version>11.0</io.github.openfeign.feign-okhttp.version>
+        <com.tencent.open-platform-sdk.version>1.4</com.tencent.open-platform-sdk.version>
+        <com.tencent.health.open-platform-guangdong-sdk.version>1.3.5-jdk1.8</com.tencent.health.open-platform-guangdong-sdk.version>
+        <com.dangdang.elastic.version>2.1.5</com.dangdang.elastic.version>
+        <de.codecentric.boot.admin.version>2.1.6</de.codecentric.boot.admin.version>
+        <com.github.pagehelper.version>1.2.13</com.github.pagehelper.version>
+        <apache.pdfbox.version>2.0.12</apache.pdfbox.version>
+        <org.apache.logging.log4j.version>2.17.1</org.apache.logging.log4j.version>
+        <org.apache.tomcat.embed.version>9.0.58</org.apache.tomcat.embed.version>
+        <com.github.ulisesbocchio.jasypt-spring-boot-starter.version>3.0.3</com.github.ulisesbocchio.jasypt-spring-boot-starter.version>
+    </properties>
 
 
-    </dependencies>
+        <dependencies>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${io.netty.netty-all.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${com.google.code.gson.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.rabbitmq/amqp-client -->
+            <dependency>
+                <groupId>com.rabbitmq</groupId>
+                <artifactId>amqp-client</artifactId>
+                <version>${com.rabbitmq.amqp-client.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${org.apache.logging.log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${org.apache.logging.log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-core</artifactId>
+                <version>${org.apache.tomcat.embed.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-websocket</artifactId>
+                <version>${org.apache.tomcat.embed.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${org.hibernate.validator.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${org.springframework.boot.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${org.springframework.boot.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!--            <dependency>-->
+            <!--                <groupId>org.springframework.cloud</groupId>-->
+            <!--                <artifactId>spring-cloud-dependencies</artifactId>-->
+            <!--                <version>${org.springframework.cloud.version}</version>-->
+            <!--                <type>pom</type>-->
+            <!--                <scope>import</scope>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>de.codecentric</groupId>-->
+            <!--                <artifactId>spring-boot-admin-dependencies</artifactId>-->
+            <!--                <version>${de.codecentric.boot.admin.version}</version>-->
+            <!--                <type>pom</type>-->
+            <!--                <scope>import</scope>-->
+            <!--            </dependency>-->
+
+
+            <!--            <dependency>-->
+            <!--                <groupId>io.github.openfeign</groupId>-->
+            <!--                <artifactId>feign-okhttp</artifactId>-->
+            <!--                <version>${io.github.openfeign.feign-okhttp.version}</version>-->
+            <!--            </dependency>-->
+
+            <!--            <dependency>-->
+            <!--                <groupId>org.mybatis.spring.boot</groupId>-->
+            <!--                <artifactId>mybatis-spring-boot-starter</artifactId>-->
+            <!--                <version>${org.mybatis.spring.boot.version}</version>-->
+            <!--            </dependency>-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${org.apache.commons.lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${org.apache.commons.lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${org.apache.commons.collections4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-math3</artifactId>
+                <version>${org.apache.commons.math3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${org.apache.commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${org.apache.commons.logging.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-dbcp2</artifactId>
+                <version>${org.apache.commons.dbcp2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${org.apache.commons.pool2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${org.apache.commons.beanutils.version}</version>
+            </dependency>
+            <!--            <dependency>-->
+            <!--                <groupId>commons-net</groupId>-->
+            <!--                <artifactId>commons-net</artifactId>-->
+            <!--                <version>${org.apache.commons.net.version}</version>-->
+            <!--            </dependency>-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${org.apache.commons.text.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <!--            <dependency>-->
+            <!--                <groupId>javax.validation</groupId>-->
+            <!--                <artifactId>validation-api</artifactId>-->
+            <!--                <version>${javax.validation.api.version}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>io.jsonwebtoken</groupId>-->
+            <!--                <artifactId>jjwt</artifactId>-->
+            <!--                <version>${io.jsonwebtoken.jjwt.version}</version>-->
+            <!--            </dependency>-->
+
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${com.alibaba.fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${com.google.code.gson.version}</version>
+            </dependency>
+
+            <!-- httpClient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>3.13.4</version>
+            </dependency>
+
+        </dependencies>
 
 
     <build>

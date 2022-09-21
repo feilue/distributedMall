@@ -1,6 +1,5 @@
-package cn.feilueze.app.service;
+package cn.feilue.app.service;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 

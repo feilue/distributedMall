@@ -30,9 +30,7 @@ import net.feilue.IMCode.service.protocal.Protocal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-private static String[] publicShiZai = {"初一","初八","十四","十五","十八","廿三","廿四","廿八","廿九"};
-private static String[] smallShiZai = {"廿七"};
-private static String[] bigShiZai = {"三十"};
+
 /**
  * MobileIMSDK的服务端入口主类。
  * <p>
@@ -364,8 +362,8 @@ public abstract class ServerLauncher
 		return running;
 	}
 	
-//	public static void main(String[] args) throws IOException 
-//    {
-//        new ServerLauncher().startup();
-//    }
+//	public static void main(String[] args) throws IOException
+////    {
+////        new ServerLauncher().startup();
+////    }
 }

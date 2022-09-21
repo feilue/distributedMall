@@ -1,7 +1,6 @@
-package cn.feilueze.core;
+package cn.feilue.app.service.core;
 
-import cn.feilueze.AppStart;
-import cn.feilueze.commone.CheckResult;
+import cn.feilue.app.service.commone.CheckResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

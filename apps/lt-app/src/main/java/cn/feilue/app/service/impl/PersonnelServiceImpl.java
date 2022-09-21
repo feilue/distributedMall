@@ -1,7 +1,7 @@
-package cn.feilueze.app.service.impl;
+package cn.feilue.app.service.impl;
 
 
-import cn.feilueze.app.service.PersonnelService;
+import cn.feilue.app.service.PersonnelService;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

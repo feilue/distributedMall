@@ -1,6 +1,6 @@
-package cn.feilueze;
+package cn.feilue;
 
-import cn.feilueze.core.Core;
+import cn.feilue.core.Core;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.concurrent.ScheduledExecutorService;

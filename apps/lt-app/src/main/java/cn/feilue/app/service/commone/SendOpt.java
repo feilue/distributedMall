@@ -1,4 +1,4 @@
-package cn.feilueze.commone;
+package cn.feilue.app.service.commone;
 
 /**
  * 发送选项

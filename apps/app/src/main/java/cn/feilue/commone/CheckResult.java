@@ -1,4 +1,4 @@
-package cn.feilueze.commone;
+package cn.feilue.commone;
 
 public class CheckResult {
     /**

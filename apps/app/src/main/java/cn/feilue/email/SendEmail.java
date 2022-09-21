@@ -1,4 +1,4 @@
-package cn.feilueze.email;
+package cn.feilue.email;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

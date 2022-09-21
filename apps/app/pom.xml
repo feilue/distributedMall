@@ -31,7 +31,7 @@
             <!--                <configuration>-->
             <!--                    <archive>-->
             <!--                        <manifest>-->
-            <!--                            <mainClass>cn.feilueze.AppStart</mainClass>-->
+            <!--                            <mainClass>cn.feilue.AppStart</mainClass>-->
             <!--                        </manifest>-->
             <!--                    </archive>-->
             <!--                    <classesDirectory>-->
@@ -44,7 +44,7 @@
             <!--                    <archive>-->
             <!--                        <manifest>-->
             <!--                            &lt;!&ndash;这里要替换成jar包main方法所在类 &ndash;&gt;-->
-            <!--                            <mainClass>cn.feilueze.AppStart</mainClass>-->
+            <!--                            <mainClass>cn.feilue.AppStart</mainClass>-->
             <!--                        </manifest>-->
             <!--                        <manifestEntries>-->
             <!--                            <Class-Path>.</Class-Path>-->
@@ -71,7 +71,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>cn.feilueze.AppStart</mainClass>
+                            <mainClass>cn.feilue.AppStart</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

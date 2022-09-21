@@ -1,8 +1,8 @@
-package cn.feilueze.core;
+package cn.feilue.core;
 
-import cn.feilueze.commone.CheckResult;
-import cn.feilueze.commone.SendOpt;
-import cn.feilueze.email.SendEmail;
+import cn.feilue.commone.CheckResult;
+import cn.feilue.commone.SendOpt;
+import cn.feilue.email.SendEmail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
