@@ -61,12 +61,10 @@ public class Core {
         //获取人员列表
         List<String> personnelList = personnelService.recipientList(SendOptEnum.EMAIL);
         personnelList.add("877767697@qq.com");
-
+        log.info("接收件人邮件列表:"+personnelList.toString());
         switch (result.getFlag()) {
             case 1:
-                System.out.println("发送十斋日邮件开始.... ");
                 sendShiZaiEmail(result, personnelList);
-                System.out.println("发送十斋日邮件结束.... ");
                 break;
             case 2:
                 sendShengDanEmail(result, personnelList);
@@ -82,12 +80,10 @@ public class Core {
     private  void sendSMS(CheckResult result) {
         List<String> personnelList = personnelService.recipientList(SendOptEnum.SMS);
         personnelList.add("15327779338");
-        
+        log.info("接收件人短信列表:"+personnelList.toString());
         switch (result.getFlag()) {
             case 1:
-                System.out.println("发送十斋日短信开始.... ");
                 sendShiZaiPhone(result, personnelList);
-                System.out.println("发送十斋日短信结束.... ");
                 break;
             case 2:
                 sendShengDanPhone(result, personnelList);
@@ -100,25 +96,33 @@ public class Core {
     }
 
     private  void sendShiZaiPhone(CheckResult result, List<String> personnelList) {
+        log.info("发送十斋日短信开始.... ");
         String templateParam = SmsTemplateEnum.SHIZAIRI.getTemplateParam();
         String labelParam = SmsTemplateEnum.SHIZAIRI.getLabelParam();
         templateParam = templateParam.replace(labelParam,result.getDate());
         sendSMS.send(personnelList, SmsTemplateEnum.SHIZAIRI,templateParam);
+        log.info("发送十斋日短信结束.... ");
     }
 
     private  void sendShengDanPhone(CheckResult result, List<String> personnelList) {
+        log.info("发送佛菩萨圣诞日短信开始.... ");
         String templateParam = SmsTemplateEnum.SHIZAIRI.getTemplateParam();
         String labelParam = SmsTemplateEnum.SHIZAIRI.getLabelParam();
         templateParam = templateParam.replace(labelParam,result.getDate()+"是"+result.getName()+"日");
         sendSMS.send(personnelList, SmsTemplateEnum.SHIZAIRI,templateParam);
+        log.info("发送佛菩萨圣诞日短信结束.... ");
     }
 
     private  void sendShiZaiEmail(CheckResult result, List<String> personnelList) {
+        log.info("发送十斋日邮件开始.... ");
         sendEmail.sendToEmails(personnelList, "明天"+result.getDate()+"是十斋日", result.getShiZaiCents());
+        log.info("发送十斋日邮件结束.... ");
     }
 
     private  void sendShengDanEmail(CheckResult result, List<String> personnelList) {
+        log.info("发送菩萨圣诞日邮件开始.... ");
         sendEmail.sendToEmails(personnelList, result.getName(), result.getPusaChristmasCents());
+        log.info("发送菩萨圣诞日邮件结束.... ");
     }
 
     public void start(){
