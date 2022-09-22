@@ -2,8 +2,10 @@ package cn.feilue.app.service.core;
 
 import cn.feilue.app.service.PersonnelService;
 import cn.feilue.app.service.commone.CheckResult;
-import cn.feilue.app.service.commone.SendOpt;
+import cn.feilue.app.service.commone.SendOptEnum;
+import cn.feilue.app.service.commone.SmsTemplateEnum;
 import cn.feilue.app.service.send.SendEmail;
+import cn.feilue.app.service.send.SendSMS;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class Core {
     @Autowired
     private SendEmail sendEmail;
     @Autowired
+    private SendSMS sendSMS;
+    @Autowired
     private CoreDateImpl coreDate;
 
     private static Logger log =   LoggerFactory.getLogger(Core.class);
@@ -28,11 +32,11 @@ public class Core {
     }
 
     public  void taskSMS() {
-        this.task(SendOpt.SMS.getCode());
+        this.task(SendOptEnum.SMS.getCode());
     }
 
     public  void taskEmail() {
-        this.task(SendOpt.EMAIL.getCode());
+        this.task(SendOptEnum.EMAIL.getCode());
     }
 
     /**
@@ -55,8 +59,7 @@ public class Core {
 
     private  void sendEmail(CheckResult result) {
         //获取人员列表
-        List<String> personnelList = personnelService.recipientList(SendOpt.EMAIL);
-//        personnelList.add("14325393322@qq.com");
+        List<String> personnelList = personnelService.recipientList(SendOptEnum.EMAIL);
         personnelList.add("877767697@qq.com");
 
         switch (result.getFlag()) {
@@ -77,7 +80,37 @@ public class Core {
     }
 
     private  void sendSMS(CheckResult result) {
+        List<String> personnelList = personnelService.recipientList(SendOptEnum.SMS);
+        personnelList.add("15327779338");
+        
+        switch (result.getFlag()) {
+            case 1:
+                System.out.println("发送十斋日短信开始.... ");
+                sendShiZaiPhone(result, personnelList);
+                System.out.println("发送十斋日短信结束.... ");
+                break;
+            case 2:
+                sendShengDanPhone(result, personnelList);
+                break;
+            case 3:
+                sendShiZaiPhone(result, personnelList);
+                sendShengDanPhone(result, personnelList);
+                break;
+        }
+    }
 
+    private  void sendShiZaiPhone(CheckResult result, List<String> personnelList) {
+        String templateParam = SmsTemplateEnum.SHIZAIRI.getTemplateParam();
+        String labelParam = SmsTemplateEnum.SHIZAIRI.getLabelParam();
+        templateParam = templateParam.replace(labelParam,result.getDate());
+        sendSMS.send(personnelList, SmsTemplateEnum.SHIZAIRI,templateParam);
+    }
+
+    private  void sendShengDanPhone(CheckResult result, List<String> personnelList) {
+        String templateParam = SmsTemplateEnum.SHIZAIRI.getTemplateParam();
+        String labelParam = SmsTemplateEnum.SHIZAIRI.getLabelParam();
+        templateParam = templateParam.replace(labelParam,result.getDate()+"是"+result.getName()+"日");
+        sendSMS.send(personnelList, SmsTemplateEnum.SHIZAIRI,templateParam);
     }
 
     private  void sendShiZaiEmail(CheckResult result, List<String> personnelList) {

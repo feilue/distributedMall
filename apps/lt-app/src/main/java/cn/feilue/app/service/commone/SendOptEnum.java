@@ -3,17 +3,17 @@ package cn.feilue.app.service.commone;
 /**
  * 发送选项
  */
-public enum SmsTemplate {
+public enum SendOptEnum {
     EMAIL(1,"邮件"),
     SMS(2,"短信")
     ;
 
-    SmsTemplate() {
+    SendOptEnum() {
     }
 
     private Integer code;
     private String optName;
-    SmsTemplate(int code, String optName) {
+    SendOptEnum(int code, String optName) {
         this.code = code;
         this.optName = optName;
     }

@@ -12,6 +12,8 @@ email:
   fromUser: 涛涛
   fromEmail:
   authCode:
+  delay: 500
 sms:
   accessKeyId:
   accessKeySecret:
+  delay: 500

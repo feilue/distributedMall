@@ -10,5 +10,6 @@ import org.springframework.stereotype.Component;
 public class SMSConfig {
     private String accessKeyId ;
     private String accessKeySecret ;
+    private Long delay;
 
 }
