@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import darabonba.core.client.ClientOverrideConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -23,6 +24,7 @@ import java.util.concurrent.ExecutionException;
 @Component
 public class SendSMS {
     private static Logger log =   LoggerFactory.getLogger(SendSMS.class);
+    @Autowired
     private SMSConfig smsConfig;
 
     public void send(List<String> phones, SmsTemplateEnum smsTemplate, String templateParam){
