@@ -15,7 +15,7 @@ public interface PersonnelService {
     public void test();
 
     @PostMapping("/add")
-    public void addRecipient(@RequestBody RecipientParam param);
+    public void addRecipient(@RequestBody RecipientParam param) throws Exception;
 
     public List<String> recipientList(SendOptEnum sendOptEnum);
 

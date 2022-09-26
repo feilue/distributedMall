@@ -13,4 +13,6 @@ public class EmailConfig {
     private String fromUser ;           //发件人名称
     private String fromEmail;  //发件人邮箱
     private String authCode ;    //发件人邮箱授权码
+    private Long delay;      //群发邮件延时
+    private String initializer;  //初始化人员
 }

@@ -19,6 +19,8 @@ import java.util.Properties;
 
 /**
  * @author hongtao
+ *
+ *
  */
 @Component
 public class SendEmail {
@@ -28,8 +30,8 @@ public class SendEmail {
 //    public String emailHost = "smtp.163.com";       //发送邮件的主机
 //    public String transportType = "smtp";           //邮件发送的协议
 //    public String fromUser = "涛涛";           //发件人名称
-//    public String fromEmail = "feilueze@163.com";  //发件人邮箱
-//    public String authCode = "NSJEMWOROVIFRSOW";    //发件人邮箱授权码
+//    public String fromEmail = "";  //发件人邮箱
+//    public String authCode = "";    //发件人邮箱授权码
 
     /**
      *  这里可以做 动态邮箱 服务账号去发送针对 公共发送邮件有限制
@@ -109,7 +111,7 @@ public class SendEmail {
         toEmails.forEach(entity -> {
             try {
                 sendToEmail(entity, subject, content);
-                Thread.sleep(1000 * 1);
+                Thread.sleep(emailConfig.getDelay());
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             } catch (MessagingException e) {

@@ -10,10 +10,13 @@ email:
   emailHost: smtp.163.com
   transportType: smtp
   fromUser: 涛涛
-  fromEmail:
+  fromEmail: feilueze@163.com
   authCode:
   delay: 500
+  initializer:
 sms:
   accessKeyId:
   accessKeySecret:
   delay: 500
+  initializer: 
+  resendSendTime: 60000

@@ -6,7 +6,8 @@ package cn.feilue.app.service.commone;
  */
 
 public enum SmsTemplateEnum {
-    SHIZAIRI(1,"读经典书籍","SMS_252695077","{\"name\":\"@@name@@\"}","@@name@@"),
+    SHIZAIRI(1,"洪涛读经典演示站","SMS_252695077","{\\\"name\\\":\\\"@@name@@\\\"}","@@name@@"),
+    SHENDAN(2,"洪涛读经典演示站","SMS_252640351","{\\\"name\\\":\\\"@@name@@\\\"}","@@name@@"),
     ;
 
     private Integer code;

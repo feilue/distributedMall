@@ -11,5 +11,7 @@ public class SMSConfig {
     private String accessKeyId ;
     private String accessKeySecret ;
     private Long delay;
+    private String initializer;  //初始化人员
+    private Long resendSendTime;  //平台限制时间
 
 }

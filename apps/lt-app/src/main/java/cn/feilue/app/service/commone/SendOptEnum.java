@@ -34,5 +34,19 @@ public enum SendOptEnum {
         this.optName = optName;
     }
 
+    public SendOptEnum getSendOpEnum(Integer code){
+        SendOptEnum[] values = SendOptEnum.values();
+        for (SendOptEnum value : values) {
+            if(value.code == code){
+                return value;
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        SendOptEnum sendOpEnum = SendOptEnum.SMS.getSendOpEnum(1);
+        System.out.println("sendOpEnum = " + sendOpEnum );
+    }
 
 }

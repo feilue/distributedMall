@@ -7,7 +7,7 @@ import lombok.Data;
  */
 @Data
 public class RecipientParam {
+    private Integer sendOpt;
     private SendOptEnum sendOptEnum;
-    private String phone;
-    private String emial;
+    private String personnel;
 }
